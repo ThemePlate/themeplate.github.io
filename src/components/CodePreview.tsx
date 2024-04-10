@@ -11,9 +11,19 @@ interface Props {
 
 const item = (value: FieldItemType) => {
 	const items = Object.entries(value)
-		.filter(([key]) => key !== 'key')
+		.filter(([key, value]) => {
+			if (key === 'key') {
+				return false;
+			}
+
+			return undefined !== value;
+		})
 		.map(([key, val]) => {
-			return `'${key}' => '${val}'`;
+			if (typeof val === 'string') {
+				val = `'${val}'`;
+			}
+
+			return `'${key}' => ${val}`;
 		});
 
 	return `'${value.key}' => array(

@@ -14,6 +14,22 @@ export const classes = {
 	field: 'col-span-3 rounded bg-neutral-600 px-3 py-1',
 };
 
+const DEFAULTS = {
+	multiple: false,
+	none: false,
+	style: '',
+	repeatable: false,
+	required: false,
+};
+
+const prepare = (name: string, value?: string | boolean) => {
+	if (name in DEFAULTS && value === DEFAULTS[name as keyof typeof DEFAULTS]) {
+		value = undefined;
+	}
+
+	return value;
+};
+
 export default function ({ values, save }: Props) {
 	const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -23,7 +39,7 @@ export default function ({ values, save }: Props) {
 
 		save({
 			...values,
-			[name]: saveValue,
+			[name]: prepare(name, saveValue),
 		});
 	};
 
