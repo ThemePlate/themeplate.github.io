@@ -26,11 +26,15 @@ export default function ({ items, initLength }: Props) {
 		];
 	};
 
+	const removeField = (index: number) => {
+		items.value = items.value.filter((_, i) => i !== index);
+	};
+
 	return (
 		<div className="grid auto-rows-min gap-4 p-4 lg:p-8">
 			<ol className="grid gap-4">
 				{items.value.map((field, index) => (
-					<FieldItem id={index} data={field} defaultOpen={index + 1 >= initLength} />
+					<FieldItem id={index} data={field} defaultOpen={index + 1 >= initLength} removeAction={removeField} />
 				))}
 			</ol>
 
