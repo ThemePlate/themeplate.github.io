@@ -18,4 +18,9 @@ export type FieldItemType = {
 	type: (typeof FIELD_TYPES)[number];
 	title: string;
 	description: string;
+	multiple?: boolean;
+	none?: boolean;
+	style?: string;
+	repeatable?: boolean;
+	required?: boolean;
 };

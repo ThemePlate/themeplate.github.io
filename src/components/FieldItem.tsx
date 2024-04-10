@@ -40,7 +40,7 @@ export default function ({ defaultOpen, id, data, removeAction }: Props) {
 			</div>
 
 			<form id={`form-${id}`} className={className} aria-labelledby={`preview-${id}`}>
-				<FieldForm values={data.peek()} save={(values) => (data.value = values)} />
+				<FieldForm values={data.value} save={(values) => (data.value = values)} />
 			</form>
 		</li>
 	);
