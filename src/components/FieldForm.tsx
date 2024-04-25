@@ -15,6 +15,8 @@ export const classes = {
 };
 
 const DEFAULTS = {
+	title: '',
+	description: '',
 	multiple: false,
 	none: false,
 	style: '',
