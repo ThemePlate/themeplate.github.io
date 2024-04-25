@@ -37,7 +37,7 @@ export default function ({ values, save }: Props) {
 
 	const handleChange = (event: any) => {
 		const { name, value, type } = event.currentTarget;
-		const saveValue = type === 'checkbox' ? 'true' === value : value;
+		const saveValue = type === 'checkbox' ? 'true' === value : 'key' === name && !value ? values.key : value;
 
 		save({
 			...values,
