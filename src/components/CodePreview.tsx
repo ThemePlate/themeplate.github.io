@@ -34,6 +34,10 @@ const item = (value: FieldItemType) => {
 const wrap = (value: Signal<FieldItemType>[]) => {
 	const items = Object.values(value).map((val) => `${item(val.value)}`);
 
+	if (!items.length) {
+		return 'array();';
+	}
+
 	return `array(
 	${items.join(',\n\t')},
 );`;
