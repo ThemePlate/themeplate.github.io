@@ -24,3 +24,11 @@ export type FieldItemType = {
 	repeatable?: boolean;
 	required?: boolean;
 };
+
+export type DragItem = {
+	id: number;
+};
+
+export const DnDTypes = {
+	FIELD: 'field',
+};
