@@ -1,6 +1,7 @@
 import { effect } from '@preact/signals';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { codeToHtml } from 'shiki';
+import CopyButton from './CopyButton';
 
 import type { Signal } from '@preact/signals';
 import type { FieldItemType } from '../types';
@@ -44,6 +45,7 @@ const wrap = (value: Signal<FieldItemType>[]) => {
 };
 
 export default function ({ data }: Props) {
+	const codeRef = useRef(null);
 	const [html, setHtml] = useState('');
 
 	effect(() => {
@@ -53,5 +55,10 @@ export default function ({ data }: Props) {
 		}).then(setHtml);
 	});
 
-	return <div className="" dangerouslySetInnerHTML={{ __html: html }}></div>;
+	return (
+		<div className="relative">
+			<div className="h-full" ref={codeRef} dangerouslySetInnerHTML={{ __html: html }}></div>
+			<CopyButton codeRef={codeRef}></CopyButton>
+		</div>
+	);
 }
