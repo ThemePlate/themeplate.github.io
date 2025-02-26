@@ -1,4 +1,5 @@
-import { Ref, useState } from 'preact/hooks';
+import type { RefObject } from 'preact';
+import { useState } from 'preact/hooks';
 
 function CheckImage() {
 	return (
@@ -23,7 +24,7 @@ function CopyImage() {
 }
 
 type Props = {
-	codeRef: Ref<HTMLDivElement>;
+	codeRef: RefObject<HTMLDivElement>;
 };
 
 export default function ({ codeRef }: Props) {

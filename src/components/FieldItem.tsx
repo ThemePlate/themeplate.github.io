@@ -74,7 +74,7 @@ export default function ({ defaultOpen, id, data, removeAction, moveAction }: Pr
 		}),
 	});
 
-	const opacity = isDragging ? 0 : 1;
+	const opacity = isDragging ? 0.1 : 1;
 	drag(drop(itemRef));
 
 	return (
